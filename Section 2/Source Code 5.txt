@@ -1,0 +1,6 @@
+Source Code 5
+Section 2, Lecture 8
+$("li").text("Hello<br>World");
+$("li").html("Hello<br>World");
+$("li").append("<div>APPENDED</div> ");
+$("li").prepend("PREPEND");

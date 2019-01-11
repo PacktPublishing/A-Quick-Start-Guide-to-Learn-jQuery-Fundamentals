@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jQuery Course</title>
+</head>
+
+<body>
+    <input type="number" value="5" name="num" max="50" min="1">
+    <input type="button" class="btn" value="Get Names">
+    <div id="output"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btn").click(function(){
+                var num = $("input[name=num]").val();
+                console.log(num);
+                var url = "https://randomuser.me/api/";
+                $.get(url,{
+                    "results":num
+                }).done(function(data){
+                    output(data.results);
+                })
+            })
+        })
+
+        function output(data) {
+            console.log(data);
+            var html = "";
+            $.each(data,function(key,value){
+                html += '<div>'+value.name.first;
+                html += ' '+value.name.last+'</div>';
+                html += '<img src="'+value.picture.thumbnail+'">';
+            })
+            $("#output").html(html);
+        }
+    </script>
+</body>
+
+</html>
